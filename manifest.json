@@ -8,7 +8,7 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.modrinth.com/*"],
+      "matches": ["*://modrinth.com/*"],
       "js": ["content.js"]
     }
   ],
