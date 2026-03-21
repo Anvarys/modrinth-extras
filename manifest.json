@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Modrinth Extras",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Adds some extra features for Modrinth website",
   "author": "Anvar",
   "permissions": [],
