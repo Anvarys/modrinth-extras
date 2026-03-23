@@ -65,7 +65,8 @@ const versionsScreenObserver = new MutationObserver(() => {
     const curlButton = document.getElementById("ME-curl-button-version-"+i);
 
     curlButton.addEventListener("click", (e) => {
-      navigator.clipboard.writeText("curl -O " + downloadButton.children[0].href);
+      const downloadButton = e.currentTarget.parentElement.parentElement.children[1].children[0]
+      navigator.clipboard.writeText("curl -O " + downloadButton.href);
       e.currentTarget.textContent = "Copied!";
     })
   }
