@@ -31,7 +31,14 @@ const downloadScreenObserver = new MutationObserver(() => {
     ).singleNodeValue;
 
     navigator.clipboard.writeText("curl -O " + downloadButton.href);
-    e.currentTarget.textContent = "Copied!"
+
+    const elem = e.currentTarget;
+    elem.textContent = "Copied!";
+    
+    setTimeout(() => {
+        elem.textContent = "";
+        elem.insertAdjacentHTML("beforeend", `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg> cURL `)
+      }, 2000);
   })
 });
 
@@ -65,9 +72,16 @@ const versionsScreenObserver = new MutationObserver(() => {
     const curlButton = document.getElementById("ME-curl-button-version-"+i);
 
     curlButton.addEventListener("click", (e) => {
-      const downloadButton = e.currentTarget.parentElement.parentElement.children[1].children[0]
+      const elem = e.currentTarget
+
+      const downloadButton = elem.parentElement.parentElement.children[1].children[0]
       navigator.clipboard.writeText("curl -O " + downloadButton.href);
-      e.currentTarget.textContent = "Copied!";
+      elem.textContent = "Copied!";
+      
+      setTimeout(() => {
+        elem.textContent = "";
+        elem.insertAdjacentHTML("beforeend", `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg> cURL `)
+      }, 2000);
     })
   }
 });
@@ -75,4 +89,4 @@ const versionsScreenObserver = new MutationObserver(() => {
 versionsScreenObserver.observe(document.body, {
   childList: true,
   subtree: true
-})
+});
